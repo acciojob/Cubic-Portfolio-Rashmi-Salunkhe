@@ -1,16 +1,88 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rotating Cube</title>
+    <style>
+        /* Scene container */
+        .scene-1 {
+            width: 200px;
+            height: 200px;
+            perspective: 800px;
+            margin: 50px auto;
+        }
+
+        /* Cube */
+        .cube-1 {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 10s infinite linear;
+        }
+
+        /* Cube faces */
+        .cube-1 .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Each face's positioning and styling */
+        .cube-1 .front  { background: #ff5733; transform: rotateY(  0deg) translateZ(100px); }
+        .cube-1 .back   { background: #33c1ff; transform: rotateY(180deg) translateZ(100px); }
+        .cube-1 .left   { background: #75ff33; transform: rotateY(-90deg) translateZ(100px); }
+        .cube-1 .right  { background: #ff33ec; transform: rotateY( 90deg) translateZ(100px); }
+        .cube-1 .top    { background: #ffd633; transform: rotateX( 90deg) translateZ(100px); }
+        .cube-1 .bottom { background: #9c33ff; transform: rotateX(-90deg) translateZ(100px); }
+
+        /* Animation */
+        @keyframes rotateCube {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to   { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        /* Responsive behavior */
+        @media screen and (max-width: 400px) {
+            .scene-1 {
+                width: 150px;
+                height: 150px;
+            }
+
+            .cube-1 .face {
+                width: 75px;
+                height: 75px;
+            }
+
+            .cube-1 .front,
+            .cube-1 .back,
+            .cube-1 .left,
+            .cube-1 .right,
+            .cube-1 .top,
+            .cube-1 .bottom {
+                transform: translateZ(75px);
+            }
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
-
+    <div class="scene-1">
+        <div class="cube-1">
+            <div class="face front">Hobbies</div>
+            <div class="face back">Skills</div>
+            <div class="face left">Likes</div>
+            <div class="face right">Dislikes</div>
+            <div class="face top">Achievements</div>
+            <div class="face bottom">Goals</div>
+        </div>
+    </div>
 </body>
-
 </html>
